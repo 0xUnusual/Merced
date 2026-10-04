@@ -53,9 +53,16 @@ Merced/
 ├── productos.html              # Página dedicada al catálogo completo con los 6 modelos y filtros
 ├── styles.css                  # Tokens de diseño, temas duales, tipografías y animaciones
 ├── app.js                      # Lógica interactiva (Catálogo, Filtros, Carrito persistente, Modal, Monograma y Tema)
+├── favicon.ico                 # Favicon multirresolución raíz (Monograma M en oro #FFCD2E)
+├── apple-touch-icon.png        # Icono de pantalla de inicio para dispositivos Apple
 ├── README.md                   # Documentación técnica del proyecto
 └── assets/
     └── images/                 # Assets gráficos optimizados
+        ├── favicon.png             # Master del Monograma M en medallón obsidiana y oro
+        ├── favicon-32x32.png       # Favicon estándar para pestañas de navegador
+        ├── favicon-16x16.png       # Favicon compacto
+        ├── favicon-192x192.png     # Icono para dispositivos móviles y PWA
+        ├── apple-touch-icon.png    # Icono táctil de alta definición
         ├── logo_merced_dark.png    # Logo carbón para Modo Claro
         ├── logo_merced_white.png   # Logo blanco radiante para Modo Oscuro
         ├── logo_merced_gold.png    # Sello dorado insignia
