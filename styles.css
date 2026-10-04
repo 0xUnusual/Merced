@@ -262,11 +262,13 @@ button {
   transition: var(--transition-smooth);
 }
 
-.nav-link:hover {
-  color: #000;
+.nav-link:hover,
+.nav-link.active {
+  color: var(--color-primary);
 }
 
-.nav-link:hover::after {
+.nav-link:hover::after,
+.nav-link.active::after {
   width: 100%;
 }
 
@@ -2023,6 +2025,175 @@ button {
 
 .catalog-modal-body {
   width: 100%;
+}
+
+/* ==========================================================================
+   DEDICATED CATALOG PAGE (productos.html)
+   ========================================================================== */
+.catalog-page-header {
+  padding: 4rem 0 2.5rem;
+  background-color: var(--color-bg-base);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.catalog-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+}
+
+.catalog-breadcrumb a {
+  color: var(--color-text-muted);
+  transition: var(--transition-fast);
+}
+
+.catalog-breadcrumb a:hover {
+  color: var(--color-secondary);
+}
+
+.breadcrumb-separator {
+  opacity: 0.4;
+}
+
+.breadcrumb-current {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.catalog-header-content {
+  max-width: 820px;
+  margin-bottom: 2.5rem;
+}
+
+.catalog-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #B58F28;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+[data-theme="dark"] .catalog-eyebrow {
+  color: var(--color-secondary);
+}
+
+.catalog-eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-secondary);
+  box-shadow: 0 0 8px var(--color-secondary);
+}
+
+.catalog-title {
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  font-weight: 300;
+  color: var(--color-primary);
+  line-height: 1.08;
+  margin-bottom: 1.25rem;
+}
+
+.catalog-subtitle {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  font-weight: 300;
+}
+
+.catalog-filter-bar {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+}
+
+.section-products-page {
+  padding: 3.5rem 0 6rem;
+  background-color: var(--color-bg-base);
+}
+
+/* Atelier Promotion Banner at bottom of products.html */
+.catalog-atelier-banner {
+  padding: 2rem 0 6rem;
+  background-color: var(--color-bg-base);
+}
+
+.atelier-banner-card {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-secondary);
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+  box-shadow: var(--shadow-luxury);
+}
+
+.atelier-banner-text {
+  padding: 3.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.atelier-banner-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #B58F28;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+[data-theme="dark"] .atelier-banner-eyebrow {
+  color: var(--color-secondary);
+}
+
+.atelier-banner-text h2 {
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  font-weight: 300;
+  color: var(--color-primary);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+.atelier-banner-text p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.atelier-banner-media {
+  position: relative;
+  min-height: 320px;
+}
+
+.atelier-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .atelier-banner-card {
+    grid-template-columns: 1fr;
+  }
+  .atelier-banner-text {
+    padding: 2.5rem 1.5rem;
+  }
+  .atelier-banner-media {
+    min-height: 240px;
+  }
 }
 
 /* ==========================================================================

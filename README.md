@@ -19,19 +19,20 @@ Sitio web oficial de la marca de marroquinería y bolsos de lujo **MERCED**, con
 - **Acento de Marca**: Incorporación del amarillo dorado insignia de Instagram (**`#FFCD2E`**) en distintivos, botones y estados activos.
 - **Persistencia**: Detección del esquema de color del sistema operativo y almacenamiento de la preferencia en `localStorage`.
 
-### 3. Catálogo de Bolsos: Obras Selectas (3) & Catálogo Completo (6)
-- **Colección Distintiva en Portada**: Presenta las **3 piezas más relevantes** de la marca en un grid simétrico de 3 columnas de alto impacto.
-- **Catálogo Completo Dedicado (Blank Modal / Drawer)**: Al hacer clic en el enlace `"Productos"` del Navbar o en el botón de la sección, se despliega una vista completa con **6 creaciones de lujo**:
+### 3. Catálogo de Bolsos: Obras Selectas en Inicio (3) & Página Dedicada de Productos (6)
+- **Colección Distintiva en Portada (`index.html`)**: Presenta las **3 piezas más relevantes** de la marca en un grid simétrico de 3 columnas de alto impacto.
+- **Página de Catálogo Completa (`productos.html`)**: Al hacer clic en el enlace `"Productos"` del Navbar o en los botones de acción, el usuario navega a una **página dedicada e independiente** (`productos.html`) con las **6 creaciones de lujo**:
   - **MERCED Signature Sol Naciente Clutch** (Clutch semicircular en abanico tejido a mano con flecos fluidos en degradados cálidos).
   - **MERCED Woven Azure Shoulder Bag** (Bolso de hombro en cuero azul cerúleo *intrecciato* con asa artesanal y esferas de madera noble).
   - **Zona Colonial Mini Crossbody** (Edición en amarillo solar `#FFCD2E`).
   - **Bahía Slouchy Cloud Clutch** (Pouch escultural plisado con cadena de eslabones dorados).
   - **Palmar Terracota Bucket Bag** (Cilindro escultural en calfskin terracota caribeña con costuras vivas).
   - **Cordillera Cacao Doctor Satchel** (Bolso estructurado en piel grano cacao profundo con asa de bambú tratado).
-- Botones de acción inmediata: *"Vista Rápida"* y *"Añadir al Bolso"*.
+- **Filtros por Categoría**: Botones interactivos en `productos.html` para filtrar por categoría (*Signature, Hombro & Noche, Edición Sol, Estructurados, Herencia Clásica* o ver Todos).
+- **Botones de acción inmediata**: *"Vista Rápida"* y *"Añadir al Bolso"*, compartidos con persistencia en `localStorage`.
 
 ### 4. Carrito Deslizante (*Slide-out Drawer Cart*)
-- Carrito lateral interactivo que calcula subtotales en tiempo real, permite añadir/remover piezas y emite notificaciones flotantes (*toast alerts*).
+- Carrito lateral interactivo persistente entre páginas que calcula subtotales en tiempo real, permite añadir/remover piezas y emite notificaciones flotantes (*toast alerts*).
 
 ### 5. Modal de Vista Rápida (*Quick View*)
 - Ficha técnica completa de cada bolso: dimensiones, tipo de piel, acabados de orfebrería y país de origen con encuadre dinámico.
@@ -48,9 +49,10 @@ Sitio web oficial de la marca de marroquinería y bolsos de lujo **MERCED**, con
 
 ```plaintext
 Merced/
-├── index.html                  # Estructura semántica, accesibilidad y SEO
+├── index.html                  # Página principal (Colección selecta, Historia, Atelier, Comunidad)
+├── productos.html              # Página dedicada al catálogo completo con los 6 modelos y filtros
 ├── styles.css                  # Tokens de diseño, temas duales, tipografías y animaciones
-├── app.js                      # Lógica interactiva (Catálogo, Carrito, Modal, Monograma y Tema)
+├── app.js                      # Lógica interactiva (Catálogo, Filtros, Carrito persistente, Modal, Monograma y Tema)
 ├── README.md                   # Documentación técnica del proyecto
 └── assets/
     └── images/                 # Assets gráficos optimizados
@@ -61,6 +63,8 @@ Merced/
         ├── bag_capcana.jpg         # Fotografía real: Woven Azure Shoulder Bag
         ├── bag_colonial.jpg        # Fotografía de catálogo: Zona Colonial Crossbody
         ├── bag_bahia.jpg           # Fotografía de catálogo: Bahía Slouchy Clutch
+        ├── bag_terracota.jpg       # Fotografía de catálogo: Palmar Terracota Bucket
+        ├── bag_cacao.jpg           # Fotografía de catálogo: Cordillera Cacao Satchel
         ├── artisan_craft.jpg       # Fotografía documental: Taller artesano
         ├── atelier_monogram.jpg    # Fotografía macro: Grabado en pan de oro
         └── editorial_campaign.jpg  # Fotografía editorial de moda

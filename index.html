@@ -44,8 +44,8 @@
 
       <!-- Left Nav Wing -->
       <nav class="nav-wing nav-wing-left" id="nav-left" aria-label="Navegación Principal Izquierda">
-        <a href="#inicio" class="nav-link">Inicio</a>
-        <a href="#productos" class="nav-link trigger-catalog-open">Productos</a>
+        <a href="#inicio" class="nav-link active">Inicio</a>
+        <a href="productos.html" class="nav-link">Productos</a>
       </nav>
 
       <!-- Center Logo (Grand, Heroic Branding) -->
@@ -110,13 +110,13 @@
             <p>Piezas emblemáticas fabricadas con acabados de alta costura y detalles en nuestro oro insignia.</p>
           </div>
           <div class="header-action-block">
-            <button class="btn-luxury-outline trigger-catalog-open" style="border-color: var(--color-border); color: var(--color-primary); background: var(--color-bg-card); padding: 0.85rem 1.75rem; font-size: 0.76rem;">
+            <a href="productos.html" class="btn-luxury-outline" style="border-color: var(--color-border); color: var(--color-primary); background: var(--color-bg-card); padding: 0.85rem 1.75rem; font-size: 0.76rem; display: inline-flex; align-items: center;">
               Ver Todos los Modelos (6)
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 0.4rem; vertical-align: middle;">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
-            </button>
+            </a>
           </div>
         </div>
 
@@ -126,13 +126,13 @@
         </div>
 
         <div style="text-align: center; margin-top: 3.5rem;">
-          <button class="btn-luxury-primary trigger-catalog-open" style="padding: 1.1rem 2.8rem;">
-            Explorar Colección Completa
+          <a href="productos.html" class="btn-luxury-primary" style="padding: 1.1rem 2.8rem; display: inline-flex;">
+            Explorar Colección Completa (6 Modelos)
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
-          </button>
+          </a>
         </div>
       </div>
     </section>
@@ -361,10 +361,10 @@
         <div class="footer-col">
           <h5>Colección</h5>
           <ul class="footer-links">
-            <li><a href="#productos">Totes de Lujo</a></li>
-            <li><a href="#productos">Bolsos de Hombro</a></li>
-            <li><a href="#productos">Crossbody & Minis</a></li>
-            <li><a href="#productos">Edición Sol </a></li>
+            <li><a href="productos.html">Totes de Lujo</a></li>
+            <li><a href="productos.html">Bolsos de Hombro</a></li>
+            <li><a href="productos.html">Crossbody & Minis</a></li>
+            <li><a href="productos.html">Edición Sol</a></li>
             <li><a href="#atelier">Servicio Monogramming</a></li>
           </ul>
         </div>
@@ -462,28 +462,6 @@
         <button class="btn-luxury-primary" id="qv-add-btn" style="width: 100%; justify-content: center;">
           Añadir al Bolso de Compra
         </button>
-      </div>
-    </div>
-  <!-- FULL CATALOG BLANK MODAL / SECTION (All 6 Luxury Handbags) -->
-  <div class="catalog-modal-backdrop" id="catalog-modal" role="dialog" aria-modal="true" aria-label="Catálogo Completo MERCED">
-    <div class="catalog-modal-dialog">
-      <div class="catalog-modal-header">
-        <div>
-          <span class="eyebrow" style="color:#B58F28; letter-spacing:0.2em; text-transform:uppercase; font-size:0.75rem; font-weight:600;">Colección Completa</span>
-          <h2 style="font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; color: var(--color-primary); margin-top: 0.2rem;">
-            Todas Nuestras Creaciones (6)
-          </h2>
-          <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-top: 0.4rem;">
-            Piezas elaboradas artesanalmente a mano en la República Dominicana con pieles seleccionadas y orfebrería de alta gama.
-          </p>
-        </div>
-        <button class="catalog-close-btn" id="catalog-close-btn" aria-label="Cerrar catálogo completo">&times;</button>
-      </div>
-
-      <div class="catalog-modal-body">
-        <div class="products-grid products-grid-six" id="catalog-all-grid">
-          <!-- Injected dynamically with all 6 products via app.js -->
-        </div>
       </div>
     </div>
   </div>

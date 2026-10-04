@@ -98,16 +98,29 @@ const PRODUCTS_DATA = [
   }
 ];
 
-// Shopping Cart State
+// Shopping Cart State (Persisted in localStorage across pages)
 let cart = [];
+try {
+  const savedCart = localStorage.getItem('merced-cart');
+  if (savedCart) cart = JSON.parse(savedCart);
+} catch (e) {
+  cart = [];
+}
+
+function saveCart() {
+  try {
+    localStorage.setItem('merced-cart', JSON.stringify(cart));
+  } catch (e) {}
+}
 
 // DOM Ready Initialization
 document.addEventListener('DOMContentLoaded', () => {
   renderFeaturedProducts();
-  renderCatalogModalProducts();
-  setupCatalogModal();
+  renderCatalogPageProducts();
+  setupCatalogFilters();
   setupNavbarScroll();
   setupCartDrawer();
+  updateCartUI(); // Restore cart UI on load
   setupMonogramSimulator();
   setupQuickViewModal();
   setupSmoothScrolling();
@@ -161,43 +174,39 @@ function renderFeaturedProducts() {
   container.innerHTML = featured.map(createProductCardHTML).join('');
 }
 
-// 2. Render Full Catalog (All 6 Luxury Pieces in dedicated blank modal/view)
-function renderCatalogModalProducts() {
+// 2. Render Full Catalog (All 6 Luxury Pieces in dedicated page productos.html)
+function renderCatalogPageProducts() {
   const container = document.getElementById('catalog-all-grid');
   if (!container) return;
 
   container.innerHTML = PRODUCTS_DATA.map(createProductCardHTML).join('');
 }
 
-// 3. Setup Catalog Modal / Blank Section Trigger
-function setupCatalogModal() {
-  const modal = document.getElementById('catalog-modal');
-  const closeBtn = document.getElementById('catalog-close-btn');
-  const openBtns = document.querySelectorAll('.trigger-catalog-open');
+// 3. Interactive Category Filter Pills on productos.html
+function setupCatalogFilters() {
+  const filterBtns = document.querySelectorAll('.catalog-filter-bar .filter-btn');
+  const catalogGrid = document.getElementById('catalog-all-grid');
+  if (!filterBtns.length || !catalogGrid) return;
 
-  function openCatalog(e) {
-    if (e) e.preventDefault();
-    if (!modal) return;
-    modal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.getAttribute('data-filter');
 
-  function closeCatalog() {
-    if (!modal) return;
-    modal.classList.remove('open');
-    document.body.style.overflow = '';
-  }
+      let filtered = PRODUCTS_DATA;
+      if (filter !== 'all') {
+        const query = filter.toLowerCase();
+        filtered = PRODUCTS_DATA.filter(p => 
+          p.category.toLowerCase().includes(query) || 
+          (p.badge && p.badge.toLowerCase().includes(query)) ||
+          p.title.toLowerCase().includes(query)
+        );
+      }
 
-  openBtns.forEach(btn => btn.addEventListener('click', openCatalog));
-  if (closeBtn) closeBtn.addEventListener('click', closeCatalog);
-  if (modal) {
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeCatalog();
+      catalogGrid.innerHTML = filtered.map(createProductCardHTML).join('');
     });
-  }
-
-  window.openCatalogModal = openCatalog;
-  window.closeCatalogModal = closeCatalog;
+  });
 }
 
 // Navbar Scroll Effect
@@ -255,6 +264,7 @@ function addToCart(productId) {
     cart.push({ ...product, quantity: 1 });
   }
 
+  saveCart();
   updateCartUI();
   showToast(`"${product.title}" añadido al bolso de compra.`);
 }
@@ -262,6 +272,7 @@ function addToCart(productId) {
 // Remove Item from Cart
 function removeFromCart(productId) {
   cart = cart.filter(item => item.id !== productId);
+  saveCart();
   updateCartUI();
 }
 
