@@ -19,12 +19,15 @@ Sitio web oficial de la marca de marroquinería y bolsos de lujo **MERCED**, con
 - **Acento de Marca**: Incorporación del amarillo dorado insignia de Instagram (**`#FFCD2E`**) en distintivos, botones y estados activos.
 - **Persistencia**: Detección del esquema de color del sistema operativo y almacenamiento de la preferencia en `localStorage`.
 
-### 3. Catálogo de Bolsos & Obras Selectas
-- Tarjetas de producto de alta gama con encuadre fotográfico milimétrico de las piezas reales:
-  - **MERCED Signature Sol Naciente Clutch** (Clutch semicircular en abanico tejido con flecos fluidos en degradados cálidos).
+### 3. Catálogo de Bolsos: Obras Selectas (3) & Catálogo Completo (6)
+- **Colección Distintiva en Portada**: Presenta las **3 piezas más relevantes** de la marca en un grid simétrico de 3 columnas de alto impacto.
+- **Catálogo Completo Dedicado (Blank Modal / Drawer)**: Al hacer clic en el enlace `"Productos"` del Navbar o en el botón de la sección, se despliega una vista completa con **6 creaciones de lujo**:
+  - **MERCED Signature Sol Naciente Clutch** (Clutch semicircular en abanico tejido a mano con flecos fluidos en degradados cálidos).
   - **MERCED Woven Azure Shoulder Bag** (Bolso de hombro en cuero azul cerúleo *intrecciato* con asa artesanal y esferas de madera noble).
   - **Zona Colonial Mini Crossbody** (Edición en amarillo solar `#FFCD2E`).
   - **Bahía Slouchy Cloud Clutch** (Pouch escultural plisado con cadena de eslabones dorados).
+  - **Palmar Terracota Bucket Bag** (Cilindro escultural en calfskin terracota caribeña con costuras vivas).
+  - **Cordillera Cacao Doctor Satchel** (Bolso estructurado en piel grano cacao profundo con asa de bambú tratado).
 - Botones de acción inmediata: *"Vista Rápida"* y *"Añadir al Bolso"*.
 
 ### 4. Carrito Deslizante (*Slide-out Drawer Cart*)

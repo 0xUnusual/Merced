@@ -45,7 +45,7 @@
       <!-- Left Nav Wing -->
       <nav class="nav-wing nav-wing-left" id="nav-left" aria-label="Navegación Principal Izquierda">
         <a href="#inicio" class="nav-link">Inicio</a>
-        <a href="#productos" class="nav-link">Productos</a>
+        <a href="#productos" class="nav-link trigger-catalog-open">Productos</a>
       </nav>
 
       <!-- Center Logo (Grand, Heroic Branding) -->
@@ -109,17 +109,30 @@
             <h2>Colección Distintiva</h2>
             <p>Piezas emblemáticas fabricadas con acabados de alta costura y detalles en nuestro oro insignia.</p>
           </div>
-          <div class="filter-pills">
-            <button class="filter-btn active">Todos los Modelos</button>
-            <button class="filter-btn">Totes & Estructurados</button>
-            <button class="filter-btn">Hombro & Noche</button>
-            <button class="filter-btn">Edición Sol </button>
+          <div class="header-action-block">
+            <button class="btn-luxury-outline trigger-catalog-open" style="border-color: var(--color-border); color: var(--color-primary); background: var(--color-bg-card); padding: 0.85rem 1.75rem; font-size: 0.76rem;">
+              Ver Todos los Modelos (6)
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 0.4rem; vertical-align: middle;">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
           </div>
         </div>
 
-        <!-- Dynamic Grid Loaded via app.js -->
-        <div class="products-grid" id="products-grid-container">
-          <!-- Injected dynamically with premium interactions -->
+        <!-- Dynamic Grid with Top 3 Most Relevant Luxury Bags -->
+        <div class="products-grid products-grid-three" id="products-grid-container">
+          <!-- Injected dynamically with top 3 products -->
+        </div>
+
+        <div style="text-align: center; margin-top: 3.5rem;">
+          <button class="btn-luxury-primary trigger-catalog-open" style="padding: 1.1rem 2.8rem;">
+            Explorar Colección Completa
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
         </div>
       </div>
     </section>
@@ -292,15 +305,20 @@
     <section class="section-social">
       <div class="container">
         <span class="eyebrow">Comunidad & Estilo</span>
-        <h2>En el Universo MERCED</h2>
-        <a href="https://instagram.com" target="_blank" rel="noopener" class="social-handle">
+        <h2 class="social-universe-title">
+          En el Universo
+          <span class="universe-logo-wrap" title="MERCED">
+            <img src="assets/images/logo_merced_dark.png" alt="MERCED" class="universe-logo-img brand-logo-responsive">
+          </span>
+        </h2>
+        <a href="https://www.instagram.com/merced.ofc/?__pwa=1" target="_blank" rel="noopener noreferrer" class="social-handle" aria-label="Abrir perfil de Instagram de MERCED">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
             stroke-linecap="round" stroke-linejoin="round">
             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
           </svg>
-          @merced.rd · Síguenos en Instagram
+          @merced.ofc · Síguenos en Instagram
         </a>
 
         <div class="social-instagram-grid">
@@ -376,7 +394,12 @@
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2026 MERCED República Dominicana. Todos los derechos reservados.</p>
+        <p>
+          &copy; 2026 MERCED República Dominicana. Todos los derechos reservados.
+          <span class="footer-creator-credit">
+            · Creada por <a href="https://github.com/0xUnusual" target="_blank" rel="noopener noreferrer" class="creator-link">Junior Montero</a>
+          </span>
+        </p>
         <div class="footer-bottom-links">
           <a href="#">Términos de Servicio</a>
           <a href="#">Política de Privacidad</a>
@@ -439,6 +462,28 @@
         <button class="btn-luxury-primary" id="qv-add-btn" style="width: 100%; justify-content: center;">
           Añadir al Bolso de Compra
         </button>
+      </div>
+    </div>
+  <!-- FULL CATALOG BLANK MODAL / SECTION (All 6 Luxury Handbags) -->
+  <div class="catalog-modal-backdrop" id="catalog-modal" role="dialog" aria-modal="true" aria-label="Catálogo Completo MERCED">
+    <div class="catalog-modal-dialog">
+      <div class="catalog-modal-header">
+        <div>
+          <span class="eyebrow" style="color:#B58F28; letter-spacing:0.2em; text-transform:uppercase; font-size:0.75rem; font-weight:600;">Colección Completa</span>
+          <h2 style="font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; color: var(--color-primary); margin-top: 0.2rem;">
+            Todas Nuestras Creaciones (6)
+          </h2>
+          <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-top: 0.4rem;">
+            Piezas elaboradas artesanalmente a mano en la República Dominicana con pieles seleccionadas y orfebrería de alta gama.
+          </p>
+        </div>
+        <button class="catalog-close-btn" id="catalog-close-btn" aria-label="Cerrar catálogo completo">&times;</button>
+      </div>
+
+      <div class="catalog-modal-body">
+        <div class="products-grid products-grid-six" id="catalog-all-grid">
+          <!-- Injected dynamically with all 6 products via app.js -->
+        </div>
       </div>
     </div>
   </div>

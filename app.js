@@ -4,6 +4,7 @@
  */
 
 // Sample Catalog Data
+// Sample Catalog Data (6 Luxury Pieces)
 const PRODUCTS_DATA = [
   {
     id: 'samana-tote',
@@ -64,6 +65,36 @@ const PRODUCTS_DATA = [
     leatherType: 'Nappa Suave Marfil & Piel Amarilla',
     dimensions: '30 cm x 18 cm x 12 cm',
     hardware: 'Cadena Gourmette Bañada en Oro'
+  },
+  {
+    id: 'palmar-terracota',
+    title: 'Palmar Terracota Bucket Bag',
+    category: 'Estructurados & Día',
+    price: 440,
+    formattedPrice: '$440 USD',
+    image: 'assets/images/bag_terracota.jpg',
+    origin: 'Curtido Vegetal Dominicano',
+    badge: 'Nuevo Lanzamiento',
+    badgeAccent: false,
+    description: 'Silueta cilíndrica escultural confeccionada en calfskin terracota caribeña con costuras vivas en amarillo dorado (#FFCD2E), asa trenzada a mano y correa ajustable extraíble.',
+    leatherType: 'Calfskin Terracota & Piel Grano Tostado',
+    dimensions: '22 cm x 26 cm x 16 cm',
+    hardware: 'Ojales y Mosquetones Bañados en Oro 24K'
+  },
+  {
+    id: 'cordillera-satchel',
+    title: 'Cordillera Cacao Doctor Satchel',
+    category: 'Herencia Clásica',
+    price: 510,
+    formattedPrice: '$510 USD',
+    image: 'assets/images/bag_cacao.jpg',
+    origin: 'Maestría Artesana Cibao',
+    badge: 'Edición Limitada',
+    badgeAccent: true,
+    description: 'Bolso estructurado de viaje y ciudad en piel grano cacao profundo con ribetes contrastantes en crema, asa de bambú tratado artesanalmente y broche de joyería dorada.',
+    leatherType: 'Piel Grano Entero Chocolate & Ribete Marfil',
+    dimensions: '34 cm x 25 cm x 14 cm',
+    hardware: 'Asa Artesanal de Bambú & Cerradura de Presión en Latón'
   }
 ];
 
@@ -72,7 +103,9 @@ let cart = [];
 
 // DOM Ready Initialization
 document.addEventListener('DOMContentLoaded', () => {
-  renderProducts();
+  renderFeaturedProducts();
+  renderCatalogModalProducts();
+  setupCatalogModal();
   setupNavbarScroll();
   setupCartDrawer();
   setupMonogramSimulator();
@@ -82,12 +115,9 @@ document.addEventListener('DOMContentLoaded', () => {
   setupThemeToggle();
 });
 
-// Render Products Grid
-function renderProducts() {
-  const container = document.getElementById('products-grid-container');
-  if (!container) return;
-
-  container.innerHTML = PRODUCTS_DATA.map(product => `
+// Helper: Generates HTML for a product card
+function createProductCardHTML(product) {
+  return `
     <article class="product-card" data-id="${product.id}">
       <div class="product-media-container">
         <div class="badge-collection">
@@ -119,7 +149,55 @@ function renderProducts() {
         </div>
       </div>
     </article>
-  `).join('');
+  `;
+}
+
+// 1. Render Featured Products (Top 3 most relevant in the main page)
+function renderFeaturedProducts() {
+  const container = document.getElementById('products-grid-container');
+  if (!container) return;
+
+  const featured = PRODUCTS_DATA.slice(0, 3);
+  container.innerHTML = featured.map(createProductCardHTML).join('');
+}
+
+// 2. Render Full Catalog (All 6 Luxury Pieces in dedicated blank modal/view)
+function renderCatalogModalProducts() {
+  const container = document.getElementById('catalog-all-grid');
+  if (!container) return;
+
+  container.innerHTML = PRODUCTS_DATA.map(createProductCardHTML).join('');
+}
+
+// 3. Setup Catalog Modal / Blank Section Trigger
+function setupCatalogModal() {
+  const modal = document.getElementById('catalog-modal');
+  const closeBtn = document.getElementById('catalog-close-btn');
+  const openBtns = document.querySelectorAll('.trigger-catalog-open');
+
+  function openCatalog(e) {
+    if (e) e.preventDefault();
+    if (!modal) return;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCatalog() {
+    if (!modal) return;
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  openBtns.forEach(btn => btn.addEventListener('click', openCatalog));
+  if (closeBtn) closeBtn.addEventListener('click', closeCatalog);
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeCatalog();
+    });
+  }
+
+  window.openCatalogModal = openCatalog;
+  window.closeCatalogModal = closeCatalog;
 }
 
 // Navbar Scroll Effect
@@ -354,13 +432,14 @@ function setupThemeToggle() {
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   function applyTheme(theme) {
+    const allLogos = document.querySelectorAll('.brand-logo-img, .brand-logo-responsive');
     if (theme === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
-      if (logoImg) logoImg.src = 'assets/images/logo_merced_white.png';
+      allLogos.forEach(img => { img.src = 'assets/images/logo_merced_white.png'; });
       if (toggleBtn) toggleBtn.setAttribute('title', 'Cambiar a Modo Claro');
     } else {
       document.documentElement.removeAttribute('data-theme');
-      if (logoImg) logoImg.src = 'assets/images/logo_merced_dark.png';
+      allLogos.forEach(img => { img.src = 'assets/images/logo_merced_dark.png'; });
       if (toggleBtn) toggleBtn.setAttribute('title', 'Cambiar a Modo Oscuro');
     }
   }
