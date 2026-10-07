@@ -140,7 +140,7 @@ try {
 function saveCart() {
   try {
     localStorage.setItem('merced-cart', JSON.stringify(cart));
-  } catch (e) {}
+  } catch (e) { }
 }
 
 // DOM Ready Initialization
@@ -235,7 +235,7 @@ function createProductCardHTML(product) {
 }
 
 // Card Carousel Navigation Handlers
-window.navigateCardCarousel = function(event, direction) {
+window.navigateCardCarousel = function (event, direction) {
   if (event) {
     event.stopPropagation();
     event.preventDefault();
@@ -260,7 +260,7 @@ window.navigateCardCarousel = function(event, direction) {
   if (counterEl) counterEl.textContent = newIndex + 1;
 };
 
-window.goToCardCarouselSlide = function(event, targetIndex) {
+window.goToCardCarouselSlide = function (event, targetIndex) {
   if (event) {
     event.stopPropagation();
     event.preventDefault();
@@ -298,9 +298,9 @@ function initCarouselTouchEvents(container) {
     const diff = touchEndX - touchStartX;
     if (Math.abs(diff) > 40) {
       if (diff < 0) {
-        window.navigateCardCarousel({ currentTarget: container, stopPropagation: () => {}, preventDefault: () => {} }, 1);
+        window.navigateCardCarousel({ currentTarget: container, stopPropagation: () => { }, preventDefault: () => { } }, 1);
       } else {
-        window.navigateCardCarousel({ currentTarget: container, stopPropagation: () => {}, preventDefault: () => {} }, -1);
+        window.navigateCardCarousel({ currentTarget: container, stopPropagation: () => { }, preventDefault: () => { } }, -1);
       }
     }
   }, { passive: true });
@@ -345,8 +345,8 @@ function setupCatalogFilters() {
       let filtered = PRODUCTS_DATA;
       if (filter !== 'all') {
         const query = filter.toLowerCase();
-        filtered = PRODUCTS_DATA.filter(p => 
-          p.category.toLowerCase().includes(query) || 
+        filtered = PRODUCTS_DATA.filter(p =>
+          p.category.toLowerCase().includes(query) ||
           (p.badge && p.badge.toLowerCase().includes(query)) ||
           p.title.toLowerCase().includes(query)
         );
@@ -517,7 +517,7 @@ function setupFaqAccordion() {
 // ==========================================================================
 // Número oficial de WhatsApp de MERCED para recibir y coordinar pedidos
 // (Formato internacional sin signos ni espacios: ej. 18290000000 o 18490000000)
-const MERCED_WHATSAPP_PHONE = '18290000000';
+const MERCED_WHATSAPP_PHONE = '18494720790';
 
 function openCheckoutModal() {
   if (!cart || cart.length === 0) {
@@ -608,7 +608,7 @@ function submitWhatsAppOrder() {
   const formattedTotal = `RD$ ${subtotal.toLocaleString()}`;
 
   const message =
-`✨ *NUEVO PEDIDO — MERCED REPÚBLICA DOMINICANA* ✨
+    `✨ *NUEVO PEDIDO — MERCED REPÚBLICA DOMINICANA* ✨
 
 Hola, deseo coordinar la compra de las siguientes piezas de su catálogo:
 
@@ -648,7 +648,7 @@ function submitQuickWhatsAppOrder() {
   const formattedTotal = `RD$ ${subtotal.toLocaleString()}`;
 
   const message =
-`✨ *CONSULTA DIRECTA DE COMPRA — MERCED RD* ✨
+    `✨ *CONSULTA DIRECTA DE COMPRA — MERCED RD* ✨
 
 Hola, deseo ordenar las siguientes piezas artesanales:
 
@@ -725,7 +725,7 @@ function applyQvImagePosition(productId, imgIndex) {
   }
 }
 
-window.setQuickViewImage = function(index) {
+window.setQuickViewImage = function (index) {
   if (!currentQvProduct) return;
   const images = (currentQvProduct.images && currentQvProduct.images.length > 0)
     ? currentQvProduct.images
@@ -749,7 +749,7 @@ window.setQuickViewImage = function(index) {
   });
 };
 
-window.navigateQuickView = function(direction) {
+window.navigateQuickView = function (direction) {
   if (!currentQvProduct) return;
   const images = (currentQvProduct.images && currentQvProduct.images.length > 0)
     ? currentQvProduct.images
@@ -928,10 +928,10 @@ function setupThemeToggle() {
     toggleBtn.addEventListener('click', () => {
       const currentTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      
+
       applyTheme(newTheme);
       localStorage.setItem('merced-theme', newTheme);
-      
+
       showToast(newTheme === 'dark' ? 'Modo Oscuro (Obsidian Noir) activado' : 'Modo Claro (Marfil) activado');
     });
   }
