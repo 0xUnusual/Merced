@@ -153,6 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCartUI(); // Restore cart UI on load
   setupFaqAccordion();
   setupQuickViewModal();
+  setupCheckoutModal();
   setupSmoothScrolling();
   setupMobileMenu();
   setupThemeToggle();
@@ -509,6 +510,183 @@ function setupFaqAccordion() {
       }
     });
   });
+}
+
+// ==========================================================================
+// WHATSAPP CHECKOUT CONCIERGE & ORDER ROUTING
+// ==========================================================================
+// Número oficial de WhatsApp de MERCED para recibir y coordinar pedidos
+// (Formato internacional sin signos ni espacios: ej. 18290000000 o 18490000000)
+const MERCED_WHATSAPP_PHONE = '18290000000';
+
+function openCheckoutModal() {
+  if (!cart || cart.length === 0) {
+    showToast('Tu bolso de compra está vacío. Agrega tus piezas favoritas primero.');
+    return;
+  }
+
+  // Cerrar el carrito lateral si está visible
+  if (typeof closeCart === 'function') {
+    closeCart();
+  }
+
+  const modal = document.getElementById('checkout-modal');
+  const itemsContainer = document.getElementById('checkout-items-list');
+  const subtotalEl = document.getElementById('checkout-subtotal-val');
+  const totalEl = document.getElementById('checkout-total-val');
+
+  if (!modal) return;
+
+  // Renderizar piezas seleccionadas en el resumen
+  let subtotal = 0;
+  if (itemsContainer) {
+    itemsContainer.innerHTML = cart.map(item => {
+      const itemSubtotal = item.price * item.quantity;
+      subtotal += itemSubtotal;
+      return `
+        <div class="checkout-item-row">
+          <img src="${item.image}" alt="${item.title}" class="checkout-item-img">
+          <div class="checkout-item-details">
+            <h5 class="checkout-item-name">${item.title}</h5>
+            <div class="checkout-item-meta">${item.formattedPrice} × ${item.quantity} ud.</div>
+          </div>
+          <div class="checkout-item-total">RD$ ${itemSubtotal.toLocaleString()}</div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  const formattedTotal = `RD$ ${subtotal.toLocaleString()}`;
+  if (subtotalEl) subtotalEl.textContent = formattedTotal;
+  if (totalEl) totalEl.textContent = formattedTotal;
+
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCheckoutModal() {
+  const modal = document.getElementById('checkout-modal');
+  if (modal) {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+
+function submitWhatsAppOrder() {
+  if (!cart || cart.length === 0) {
+    showToast('Tu bolso de compra está vacío.');
+    return;
+  }
+
+  const nameInput = document.getElementById('checkout-name');
+  const phoneInput = document.getElementById('checkout-phone');
+  const cityInput = document.getElementById('checkout-city');
+  const addressInput = document.getElementById('checkout-address');
+  const paymentInput = document.getElementById('checkout-payment');
+  const notesInput = document.getElementById('checkout-notes');
+
+  const name = nameInput ? nameInput.value.trim() : '';
+  const clientPhone = phoneInput && phoneInput.value.trim() ? phoneInput.value.trim() : 'Coordinar por WhatsApp';
+  const city = cityInput && cityInput.value ? cityInput.value : 'Santo Domingo';
+  const address = addressInput && addressInput.value.trim() ? addressInput.value.trim() : 'Coordinar con el asesor';
+  const payment = paymentInput ? paymentInput.value : 'Transferencia Banco Popular Dominicano';
+  const notes = notesInput && notesInput.value.trim() ? notesInput.value.trim() : '';
+
+  if (!name) {
+    showToast('Por favor introduce tu nombre para el pedido.');
+    if (nameInput) nameInput.focus();
+    return;
+  }
+
+  let subtotal = 0;
+  const itemsText = cart.map(item => {
+    const itemSubtotal = item.price * item.quantity;
+    subtotal += itemSubtotal;
+    return `• ${item.quantity}x *${item.title}* (${item.formattedPrice} c/u) = RD$ ${itemSubtotal.toLocaleString()}`;
+  }).join('\n');
+
+  const formattedTotal = `RD$ ${subtotal.toLocaleString()}`;
+
+  const message =
+`✨ *NUEVO PEDIDO — MERCED REPÚBLICA DOMINICANA* ✨
+
+Hola, deseo coordinar la compra de las siguientes piezas de su catálogo:
+
+🛍️ *PIEZAS EN LA ORDEN:*
+${itemsText}
+
+💰 *TOTAL A PAGAR:* ${formattedTotal}
+🚚 *ENVÍO NACIONAL:* De cortesía incluido en RD
+
+👤 *DATOS DEL CLIENTE:*
+• *Cliente:* ${name}
+• *Teléfono:* ${clientPhone}
+• *Ciudad/Provincia:* ${city}
+• *Dirección/Sector:* ${address}
+• *Preferencia de Pago:* ${payment}
+${notes ? `• *Notas Especiales:* ${notes}\n` : ''}
+Por favor confírmenme la disponibilidad y los datos de cuenta bancaria para proceder con la transferencia. ¡Muchas gracias!`;
+
+  const waUrl = `https://wa.me/${MERCED_WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
+  window.open(waUrl, '_blank');
+  showToast('¡Abriendo WhatsApp para confirmar tu pedido!');
+  closeCheckoutModal();
+}
+
+function submitQuickWhatsAppOrder() {
+  if (!cart || cart.length === 0) {
+    showToast('Tu bolso de compra está vacío.');
+    return;
+  }
+
+  let subtotal = 0;
+  const itemsText = cart.map(item => {
+    subtotal += item.price * item.quantity;
+    return `• ${item.quantity}x *${item.title}* (${item.formattedPrice})`;
+  }).join('\n');
+
+  const formattedTotal = `RD$ ${subtotal.toLocaleString()}`;
+
+  const message =
+`✨ *CONSULTA DIRECTA DE COMPRA — MERCED RD* ✨
+
+Hola, deseo ordenar las siguientes piezas artesanales:
+
+${itemsText}
+
+💰 *Total Estimado:* ${formattedTotal}
+🚚 *Envío:* Nacional de cortesía incluido
+
+Por favor indíquenme los pasos para coordinar la entrega y los datos de transferencia bancaria. ¡Gracias!`;
+
+  const waUrl = `https://wa.me/${MERCED_WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
+  window.open(waUrl, '_blank');
+  showToast('¡Abriendo WhatsApp con tu pedido!');
+  closeCheckoutModal();
+}
+
+function setupCheckoutModal() {
+  const modal = document.getElementById('checkout-modal');
+  const closeBtn = document.getElementById('checkout-close-btn');
+
+  if (closeBtn) closeBtn.addEventListener('click', closeCheckoutModal);
+
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeCheckoutModal();
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && modal.classList.contains('open')) {
+      closeCheckoutModal();
+    }
+  });
+
+  window.openCheckoutModal = openCheckoutModal;
+  window.closeCheckoutModal = closeCheckoutModal;
+  window.submitWhatsAppOrder = submitWhatsAppOrder;
+  window.submitQuickWhatsAppOrder = submitQuickWhatsAppOrder;
 }
 
 // Quick View Modal Multi-Image Gallery

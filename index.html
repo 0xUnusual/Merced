@@ -35,7 +35,7 @@
     <span style="opacity: 0.6;">|</span>
     <span>ENVÍOS NACIONALES DE CORTESÍA</span>
     <span style="opacity: 0.6;">|</span>
-    <span>EDICIONES LIMITADAS</span>
+    <span>PIEZAS ÚNICAS Y EXCLUSIVAS</span>
   </aside>
 
   <!-- Main Luxury Header with Centered Logo -->
@@ -560,7 +560,7 @@
           Envío asegurado de cortesía incluido. Cada bolso se entrega en nuestra caja de presentación con certificado de
           autenticidad.
         </p>
-        <button class="btn-checkout" onclick="showToast('Iniciando pasarela de pago seguro MERCED...')">
+        <button class="btn-checkout" onclick="openCheckoutModal()">
           Finalizar Compra
         </button>
       </div>
@@ -606,6 +606,137 @@
         <button class="btn-luxury-primary" id="qv-add-btn" style="width: 100%; justify-content: center;">
           Añadir al Bolso de Compra
         </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKOUT WHATSAPP MODAL (Atención Exclusiva & Pedidos por WhatsApp) -->
+  <div class="modal-backdrop" id="checkout-modal">
+    <div class="checkout-modal-card">
+      <button class="modal-close-btn" id="checkout-close-btn" aria-label="Cerrar modal de compra">&times;</button>
+
+      <div class="checkout-modal-header">
+        <div class="checkout-badge-pill">
+          <span class="checkout-badge-dot"></span>
+          <span>ATENCIÓN PERSONALIZADA · MERCED RD</span>
+        </div>
+        <h3 class="checkout-modal-title">Finalizar Pedido por WhatsApp</h3>
+        <p class="checkout-modal-subtitle">
+          Confirmaremos la confección de tus piezas y coordinaremos el método de pago por transferencia bancaria nacional o pago coordinado.
+        </p>
+      </div>
+
+      <div class="checkout-modal-grid">
+        <!-- Columna Izquierda: Resumen del Pedido -->
+        <div class="checkout-summary-col">
+          <h4 class="checkout-col-heading">Resumen de Piezas</h4>
+          <div class="checkout-items-list" id="checkout-items-list">
+            <!-- Inyectado dinámicamente con app.js -->
+          </div>
+
+          <div class="checkout-totals-box">
+            <div class="checkout-total-row">
+              <span>Subtotal</span>
+              <span id="checkout-subtotal-val">RD$ 0</span>
+            </div>
+            <div class="checkout-total-row highlight">
+              <span>Envío Nacional</span>
+              <span class="checkout-free-shipping">Cortesía (Gratis)</span>
+            </div>
+            <div class="checkout-total-divider"></div>
+            <div class="checkout-total-row main-total">
+              <span>Total Estimado</span>
+              <span class="checkout-final-amount" id="checkout-total-val">RD$ 0</span>
+            </div>
+          </div>
+
+          <div class="checkout-perks-box">
+            <div class="checkout-perk-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFCD2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+              <span>Empaque de regalo & caja protectora rígida</span>
+            </div>
+            <div class="checkout-perk-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFCD2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+              <span>Certificado de autenticidad artesanal</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna Derecha: Formulario del Cliente -->
+        <div class="checkout-form-col">
+          <h4 class="checkout-col-heading">Datos de Entrega</h4>
+          <form id="checkout-form" onsubmit="event.preventDefault(); submitWhatsAppOrder();">
+            <div class="form-group">
+              <label for="checkout-name" class="form-label">Nombre y Apellido <span class="required">*</span></label>
+              <input type="text" id="checkout-name" class="form-control" placeholder="Ej. Ana Victoria Rodríguez" required>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="checkout-phone" class="form-label">Teléfono / WhatsApp</label>
+                <input type="tel" id="checkout-phone" class="form-control" placeholder="Ej. 829-555-0123">
+              </div>
+              <div class="form-group">
+                <label for="checkout-city" class="form-label">Ciudad / Provincia <span class="required">*</span></label>
+                <select id="checkout-city" class="form-control" required>
+                  <option value="" disabled selected>Selecciona tu localidad</option>
+                  <option value="Santo Domingo (Distrito Nacional)">Santo Domingo (D.N.)</option>
+                  <option value="Santo Domingo Este">Santo Domingo Este</option>
+                  <option value="Santo Domingo Oeste">Santo Domingo Oeste</option>
+                  <option value="Santo Domingo Norte">Santo Domingo Norte</option>
+                  <option value="Santiago de los Caballeros">Santiago</option>
+                  <option value="Punta Cana / Bávaro">Punta Cana / Bávaro</option>
+                  <option value="La Romana">La Romana</option>
+                  <option value="Puerto Plata">Puerto Plata</option>
+                  <option value="San Cristóbal">San Cristóbal</option>
+                  <option value="San Pedro de Macorís">San Pedro de Macorís</option>
+                  <option value="La Vega">La Vega</option>
+                  <option value="Bonao">Bonao</option>
+                  <option value="Otra Provincia en RD">Otra Provincia (RD)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="checkout-address" class="form-label">Sector & Dirección de Entrega</label>
+              <input type="text" id="checkout-address" class="form-control" placeholder="Ej. Piantini, Calle Federico Geraldino #45">
+            </div>
+
+            <div class="form-group">
+              <label for="checkout-payment" class="form-label">Forma de Pago Preferida</label>
+              <select id="checkout-payment" class="form-control">
+                <option value="Transferencia Banco Popular Dominicano">Transferencia Banco Popular Dominicano</option>
+                <option value="Transferencia Banreservas">Transferencia Banreservas</option>
+                <option value="Transferencia Banco BHD">Transferencia Banco BHD</option>
+                <option value="Pago contra entrega (Coordinado)">Pago Contra Entrega (Coordinado en Santo Domingo)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="checkout-notes" class="form-label">Notas Adicionales / Dedicatoria</label>
+              <textarea id="checkout-notes" class="form-control" rows="2" placeholder="Ej. Es un obsequio especial, empacar con dedicatoria..."></textarea>
+            </div>
+
+            <div class="checkout-actions-row">
+              <button type="submit" class="btn-whatsapp-checkout" id="btn-submit-order">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.149.929 3.182 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.768-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.075-1.104-.055-.542-.172-1.229-.516-2.073-1.36-.844-.843-1.188-1.53-1.36-2.072-.13-.41-.1-.792-.055-1.104.05-.333.419-1.026.824-1.17.135-.048.281-.048.406 0 .151.058.421.674.522.91.07.164.088.33.018.471-.06.12-.135.215-.246.335-.11.121-.215.195-.31.32-.108.14-.047.309.034.45.311.538.708 1.014 1.258 1.378.174.116.327.13.46.043.15-.099.37-.384.507-.57.108-.145.242-.143.385-.091.144.052.91.43 1.066.508.156.078.26.117.299.182.04.066.04.382-.105.786z"/>
+                </svg>
+                <span>Confirmar Pedido vía WhatsApp</span>
+              </button>
+
+              <button type="button" class="btn-quick-whatsapp" onclick="submitQuickWhatsAppOrder()">
+                O enviar pedido directo sin formulario
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>

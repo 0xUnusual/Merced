@@ -32,8 +32,14 @@ Sitio web oficial de la marca de marroquinería y bolsos de lujo **MERCED**, con
 - **Filtros por Categoría**: Botones interactivos en `productos.html` para filtrar por colección y estilo (Experimental, Signature, Hombro & Noche, Edición Sol, Alta Noche & Gala, Estructurados & Día).
 - **Botones de acción inmediata**: *"Vista Rápida"* (con galería multi-imagen interactiva) y *"Añadir al Bolso"*, compartidos con persistencia en `localStorage`.
 
-### 4. Carrito Deslizante (*Slide-out Drawer Cart*)
-- Carrito lateral interactivo persistente entre páginas que calcula subtotales en tiempo real, permite añadir/remover piezas y emite notificaciones flotantes (*toast alerts*).
+### 4. Carrito Deslizante & Finalización de Pedidos vía WhatsApp Concierge
+- **Bolso de Compra Dinámico**: Carrito lateral interactivo persistente entre páginas que calcula subtotales en tiempo real y permite añadir/remover piezas.
+- **Modal de Pedido por WhatsApp**:
+  - Al presionar *"Finalizar Compra"*, se despliega un modal exclusivo de atención personalizada (*Concierge MERCED*).
+  - Muestra el resumen de las piezas elegidas con fotos, cantidades y monto total calculado en pesos dominicanos (**RD$**).
+  - Formulario de entrega en RD: Nombre, Teléfono, Ciudad/Provincia (Santo Domingo, Santiago, Punta Cana, etc.), Dirección/Sector, método de pago (Transferencias Banco Popular, Banreservas, BHD o coordinado) y dedicatoria/notas.
+  - Al confirmar, genera un mensaje profesionalmente formateado y abre la conversación oficial en WhatsApp para coordinar pago y entrega directa con la marca.
+  - Incluye botón de consulta rápida para enviar la orden con un solo clic.
 
 ### 5. Modal de Vista Rápida (*Quick View*)
 - Ficha técnica completa de cada bolso: dimensiones, tipo de piel, acabados de orfebrería y país de origen con encuadre dinámico.
