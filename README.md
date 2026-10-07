@@ -19,17 +19,18 @@ Sitio web oficial de la marca de marroquinería y bolsos de lujo **MERCED**, con
 - **Acento de Marca**: Incorporación del amarillo dorado insignia de Instagram (**`#FFCD2E`**) en distintivos, botones y estados activos.
 - **Persistencia**: Detección del esquema de color del sistema operativo y almacenamiento de la preferencia en `localStorage`.
 
-### 3. Catálogo de Bolsos: Obras Selectas en Inicio (3) & Página Dedicada de Productos (6)
-- **Colección Distintiva en Portada (`index.html`)**: Presenta las **3 piezas más relevantes** de la marca en un grid simétrico de 3 columnas de alto impacto.
-- **Página de Catálogo Completa (`productos.html`)**: Al hacer clic en el enlace `"Productos"` del Navbar o en los botones de acción, el usuario navega a una **página dedicada e independiente** (`productos.html`) con las **6 creaciones de lujo**:
-  - **MERCED Signature Sol Naciente Clutch** (Clutch semicircular en abanico tejido a mano con flecos fluidos en degradados cálidos).
-  - **MERCED Woven Azure Shoulder Bag** (Bolso de hombro en cuero azul cerúleo *intrecciato* con asa artesanal y esferas de madera noble).
-  - **Zona Colonial Mini Crossbody** (Edición en amarillo solar `#FFCD2E`).
-  - **Bahía Slouchy Cloud Clutch** (Pouch escultural plisado con cadena de eslabones dorados).
-  - **Palmar Terracota Bucket Bag** (Cilindro escultural en calfskin terracota caribeña con costuras vivas).
-  - **Cordillera Cacao Doctor Satchel** (Bolso estructurado en piel grano cacao profundo con asa de bambú tratado).
-- **Filtros por Categoría**: Botones interactivos en `productos.html` para filtrar por categoría (*Signature, Hombro & Noche, Edición Sol, Estructurados, Herencia Clásica* o ver Todos).
-- **Botones de acción inmediata**: *"Vista Rápida"* y *"Añadir al Bolso"*, compartidos con persistencia en `localStorage`.
+### 3. Catálogo de Bolsos Artesanales de Lujo (RD$)
+- **Carrusel Multi-imagen en cada Card**: Navegación fluida con flechas de lujo (`‹` / `›`), indicadores de puntos, insignia de conteo de fotos (`1 / 3`) y gestos táctiles (swipe).
+- **Colección Distintiva en Portada (`index.html`)**: Presenta las primeras 3 piezas artesanales en un grid simétrico de alto impacto.
+- **Página de Catálogo Completa (`productos.html`)**: Catálogo con los modelos emblemáticos de la marca:
+  - **Prima** (RD$ 6,000): Primer modelo experimental de la marca, tejido a mano en trapillo con mango grueso y flecos vivos.
+  - **Eloísa** (RD$ 5,500): Homenaje a una mujer de carácter; mango tejido con flecos, cuerpo en cuero sintético y 9 bolas de madera.
+  - **Moka** (RD$ 6,500): Tonalidades café Moca, tejido en trapillo con paneles triangulares, tiras largas y 10 bolas de madera.
+  - **Teresa** (RD$ 7,999): Modelo icónico semicircular en trapillo rojo coral con denso fleco en cascada y mango desmontable.
+  - **Candela** (RD$ 7,500): Explosión bicolor naranja y rojo coral, silueta semicircular, mango desmontable y 5 bolas de madera.
+  - **Jennie** (RD$ 7,490): Bolso artesanal en Denim / Jean reciclado con mango desmontable en trapillo blanco, placa dorada MERCED y acabado deshilachado.
+- **Filtros por Categoría**: Botones interactivos en `productos.html` para filtrar por colección y estilo (Experimental, Signature, Hombro & Noche, Edición Sol, Alta Noche & Gala, Estructurados & Día).
+- **Botones de acción inmediata**: *"Vista Rápida"* (con galería multi-imagen interactiva) y *"Añadir al Bolso"*, compartidos con persistencia en `localStorage`.
 
 ### 4. Carrito Deslizante (*Slide-out Drawer Cart*)
 - Carrito lateral interactivo persistente entre páginas que calcula subtotales en tiempo real, permite añadir/remover piezas y emite notificaciones flotantes (*toast alerts*).
@@ -37,8 +38,8 @@ Sitio web oficial de la marca de marroquinería y bolsos de lujo **MERCED**, con
 ### 5. Modal de Vista Rápida (*Quick View*)
 - Ficha técnica completa de cada bolso: dimensiones, tipo de piel, acabados de orfebrería y país de origen con encuadre dinámico.
 
-### 6. Atelier & Simulador de Monograma Bespoke
-- Apartado interactivo donde los clientes pueden escribir sus iniciales (hasta 3 letras) y visualizar en tiempo real su estampado en pan de oro de 24 quilates.
+### 6. Centro de Preguntas Frecuentes (FAQ)
+- Apartado interactivo tipo acordeón accesible desde la navegación principal y banner dedicado, con respuestas sobre confección artesanal a mano en RD, envíos nacionales, métodos de pago, cuidado del bolso y pedidos en colores personalizados, junto con canal directo de contacto.
 
 ### 7. Storytelling Dominicano & Filosofía de Marca
 - Homenaje visual y narrativo a los maestros marroquineros dominicanos, la curaduría de pieles y el diseño caribeño con proyección internacional.

@@ -62,12 +62,12 @@
         </a>
       </div>
 
-      <!-- Right Nav Wing (Historia + Atelier Exclusivo) -->
+      <!-- Right Nav Wing (Historia + FAQ) -->
       <nav class="nav-wing nav-wing-right" id="nav-right" aria-label="Navegación Principal Derecha">
         <a href="#historia" class="nav-link">Historia</a>
-        <a href="#atelier" class="nav-link">
-          Atelier
-          <span class="nav-tag-badge">Bespoke</span>
+        <a href="#faq" class="nav-link">
+          FAQ
+          <span class="nav-tag-badge">Ayuda</span>
         </a>
 
         <!-- Fast Actions (Theme Toggle & Cart) -->
@@ -118,7 +118,7 @@
           </div>
           <div class="header-action-block">
             <a href="productos.html" class="btn-luxury-outline" style="border-color: var(--color-border); color: var(--color-primary); background: var(--color-bg-card); padding: 0.85rem 1.75rem; font-size: 0.76rem; display: inline-flex; align-items: center;">
-              Ver Todos los Modelos (6)
+              Ver Catálogo Completo
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 0.4rem; vertical-align: middle;">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -134,7 +134,7 @@
 
         <div style="text-align: center; margin-top: 3.5rem;">
           <a href="productos.html" class="btn-luxury-primary" style="padding: 1.1rem 2.8rem; display: inline-flex;">
-            Explorar Colección Completa (6 Modelos)
+            Explorar Colección Completa
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
@@ -188,7 +188,7 @@
                 </div>
               </div>
             </div>
-            <a href="#atelier" class="btn-luxury-primary">Conocer el Taller</a>
+            <a href="productos.html" class="btn-luxury-primary">Explorar Toda la Colección</a>
           </div>
         </div>
       </div>
@@ -237,44 +237,138 @@
       </div>
     </section>
 
-    <!-- SECTION ATELIER & PERSONALIZACIÓN (Nuevo Apartado de Alta Gama) -->
-    <section class="section-atelier" id="atelier">
-      <div class="atelier-glow"></div>
+    <!-- SECTION PREGUNTAS FRECUENTES (FAQ) -->
+    <section class="section-faq" id="faq">
+      <div class="faq-ambient-glow"></div>
       <div class="container">
-        <div class="atelier-grid">
-          <div class="atelier-media-wrapper">
-            <img src="assets/images/atelier_monogram.jpg" alt="Grabado personalizado en oro en el Atelier MERCED"
-              class="atelier-img">
-            <div class="atelier-tag-overlay">Servicio Bespoke Exclusivo</div>
-          </div>
+        <div class="faq-header-editorial">
+          <span class="eyebrow" style="color: #FFCD2E; letter-spacing: 0.22em; text-transform: uppercase; font-size: 0.78rem; font-weight: 600;">
+            Centro de Ayuda · MERCED
+          </span>
+          <h2 class="faq-title">Preguntas Frecuentes</h2>
+          <p class="faq-subtitle">
+            Resolvemos tus dudas sobre nuestras piezas artesanales, confección a mano en República Dominicana, envíos y cuidados.
+          </p>
+        </div>
 
-          <div class="atelier-content">
-            <span class="eyebrow">Atelier MERCED</span>
-            <h2>Hazlo Único: Grabado de Iniciales en Oro</h2>
-            <p>
-              Elevamos tu pieza a la categoría de joya personal. En nuestro Atelier ofrecemos el servicio de
-              termoestampado con pan de oro de 24 quilates o grabado ciego en bajorrelieve para que tu bolso lleve tu
-              sello de identidad.
-            </p>
-
-            <!-- Interactive Monogram Simulator -->
-            <div class="monogram-simulator-box">
-              <h4>Simulador de Iniciales en Vivo</h4>
-              <p>Escribe hasta 3 iniciales para visualizar tu monograma de cortesía:</p>
-              <div class="monogram-input-group">
-                <input type="text" id="monogram-input" class="monogram-input" maxlength="3" value="ME"
-                  placeholder="ABC">
-                <div class="monogram-preview-tag" id="monogram-preview">M.E.</div>
+        <div class="faq-accordion" id="faq-accordion">
+          <!-- FAQ Item 1 -->
+          <div class="faq-item" data-faq-item>
+            <button class="faq-question-btn" type="button" aria-expanded="false" aria-controls="faq-ans-1">
+              <span class="faq-question-text">¿Cómo se elabora cada bolso MERCED?</span>
+              <span class="faq-toggle-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer-collapse" id="faq-ans-1">
+              <div class="faq-answer-body">
+                <p>
+                  Cada una de nuestras piezas es tejida y ensamblada 100% a mano en la República Dominicana. Empleamos trapillo de alta calidad, denim reciclado seleccionado y detalles como bolas de madera natural y herrajes resistentes, haciendo que cada diseño sea único y tenga carácter propio.
+                </p>
               </div>
             </div>
+          </div>
 
-            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-              <button class="btn-luxury-primary"
-                onclick="showToast('Solicitud de monograma activada para tu próximo pedido.')">
-                Reservar Pieza Personalizada
-              </button>
-              <a href="#productos" class="btn-luxury-outline">Ver Bolsos Disponibles</a>
+          <!-- FAQ Item 2 -->
+          <div class="faq-item" data-faq-item>
+            <button class="faq-question-btn" type="button" aria-expanded="false" aria-controls="faq-ans-2">
+              <span class="faq-question-text">¿Hacen envíos a todo el territorio nacional?</span>
+              <span class="faq-toggle-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer-collapse" id="faq-ans-2">
+              <div class="faq-answer-body">
+                <p>
+                  Sí, realizamos envíos seguros y cuidadosamente empacados a Santo Domingo, Santiago y todas las provincias de la República Dominicana. Para envíos internacionales, puedes contactarnos directamente para coordinar la mejor tarifa y método de entrega a tu destino.
+                </p>
+              </div>
             </div>
+          </div>
+
+          <!-- FAQ Item 3 -->
+          <div class="faq-item" data-faq-item>
+            <button class="faq-question-btn" type="button" aria-expanded="false" aria-controls="faq-ans-3">
+              <span class="faq-question-text">¿Cuáles son los métodos de pago aceptados?</span>
+              <span class="faq-toggle-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer-collapse" id="faq-ans-3">
+              <div class="faq-answer-body">
+                <p>
+                  Aceptamos transferencias bancarias nacionales (Banco Popular, Banreservas, BHD), depósitos, tarjetas de crédito/débito y pagos coordinados vía WhatsApp para una atención personalizada.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 4 -->
+          <div class="faq-item" data-faq-item>
+            <button class="faq-question-btn" type="button" aria-expanded="false" aria-controls="faq-ans-4">
+              <span class="faq-question-text">¿Cómo debo cuidar y limpiar mi bolso artesanal?</span>
+              <span class="faq-toggle-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer-collapse" id="faq-ans-4">
+              <div class="faq-answer-body">
+                <p>
+                  Recomendamos limpiar manchas superficiales con un paño suave ligeramente humedecido y secar siempre a la sombra. Evita el uso de lavadora. En modelos con flecos o acabado deshilachado (como Jennie o Teresa), puedes peinar los flecos suavemente con los dedos para mantener su soltura y volumen original.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 5 -->
+          <div class="faq-item" data-faq-item>
+            <button class="faq-question-btn" type="button" aria-expanded="false" aria-controls="faq-ans-5">
+              <span class="faq-question-text">¿Puedo solicitar una combinación de colores especial?</span>
+              <span class="faq-toggle-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer-collapse" id="faq-ans-5">
+              <div class="faq-answer-body">
+                <p>
+                  ¡Por supuesto! Si deseas un modelo en un color de trapillo específico o detalles especiales, escríbenos a través de nuestro Instagram o WhatsApp y con gusto evaluaremos la disponibilidad de materiales para crear tu pieza.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Contact Card Callout -->
+        <div class="faq-contact-card">
+          <div class="faq-contact-content">
+            <span class="faq-contact-badge">¿Tienes otra pregunta?</span>
+            <h3>Estamos aquí para atenderte</h3>
+            <p>Escríbenos y nuestro equipo te responderá de forma personalizada para asesorarte con tu pedido.</p>
+          </div>
+          <div class="faq-contact-actions">
+            <a href="https://www.instagram.com/merced.ofc/?__pwa=1" target="_blank" rel="noopener noreferrer" class="btn-luxury-primary" style="display:inline-flex; align-items:center; gap:0.6rem;">
+              <span>Escríbenos en Instagram</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
           </div>
         </div>
       </div>
@@ -368,11 +462,11 @@
         <div class="footer-col">
           <h5>Colección</h5>
           <ul class="footer-links">
-            <li><a href="productos.html">Totes de Lujo</a></li>
-            <li><a href="productos.html">Bolsos de Hombro</a></li>
-            <li><a href="productos.html">Crossbody & Minis</a></li>
-            <li><a href="productos.html">Edición Sol</a></li>
-            <li><a href="#atelier">Servicio Monogramming</a></li>
+            <li><a href="productos.html">Todos los Modelos</a></li>
+            <li><a href="productos.html">Modelos en Trapillo</a></li>
+            <li><a href="productos.html">Edición Denim</a></li>
+            <li><a href="productos.html">Siluetas de Fiesta</a></li>
+            <li><a href="#faq">Preguntas Frecuentes</a></li>
           </ul>
         </div>
 
@@ -380,10 +474,10 @@
           <h5>La Casa</h5>
           <ul class="footer-links">
             <li><a href="#historia">Nuestra Historia</a></li>
-            <li><a href="#atelier">El Taller de Artesanos</a></li>
-            <li><a href="#inicio">Sostenibilidad & Pieles</a></li>
-            <li><a href="#inicio">Cuidado del Cuero</a></li>
-            <li><a href="#inicio">Citas Privadas</a></li>
+            <li><a href="#faq">Envíos & Dudas</a></li>
+            <li><a href="#inicio">Sostenibilidad & Materiales</a></li>
+            <li><a href="#faq">Cuidado de los Bolsos</a></li>
+            <li><a href="https://www.instagram.com/merced.ofc/?__pwa=1" target="_blank" rel="noopener noreferrer">Instagram Oficial</a></li>
           </ul>
         </div>
 
@@ -449,8 +543,21 @@
   <div class="modal-backdrop" id="quickview-modal">
     <div class="quickview-card">
       <button class="modal-close-btn" id="quickview-close-btn" aria-label="Cerrar ventana">&times;</button>
-      <div style="background:var(--color-bg-subtle); display:flex; align-items:center; justify-content:center;">
-        <img src="" alt="Detalle del Bolso" class="quickview-img" id="qv-img">
+      <div class="quickview-gallery-col">
+        <div class="quickview-main-img-wrap">
+          <img src="" alt="Detalle del Bolso" class="quickview-img" id="qv-img">
+          <button class="qv-arrow qv-arrow-prev" id="qv-arrow-prev" aria-label="Foto anterior" type="button">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button class="qv-arrow qv-arrow-next" id="qv-arrow-next" aria-label="Foto siguiente" type="button">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+        <div class="quickview-thumbnails-row" id="qv-thumbnails"></div>
       </div>
       <div class="quickview-info">
         <span class="product-category" id="qv-category" style="margin-bottom: 0.5rem;"></span>
